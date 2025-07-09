@@ -1,0 +1,42 @@
+@charset "ISO-8859-1";
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fffdf7;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.menu-item {
+  width: 250px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 10px;
+  background: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.menu-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.cta-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: #c0392b;
+}
