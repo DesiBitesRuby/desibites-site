@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desi Bites | Homemade North Indian Food</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--main-bg) url('image/YellowGreen.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--main-text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+
+    /* Navbar */
+    .navbar {
+      background-color: #A8323E;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .navbar-logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .navbar-links a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-links a:hover {
+      color: #FFD700;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 180px;
+      height: 100%;
+      background-color: #fff;
+      border-right: 1px solid #eee;
+      padding-top: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #55714B;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .sidebar a:hover {
+      background-color: #f4f4f4;
+    }
+
+    /* Hero */
+    .hero {
+      margin-left: 180px;
+      background: url('image/YellowGreen.jpg') center/cover no-repeat;
+      padding: 100px 30px;
+      color: white;
+      position: relative;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(139, 62, 47, 0.3);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .order-btn {
+      background-color: #d35400;
+      color: #fff;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 6px;
+      font-size: 18px;
+      text-decoration: none;
+      font-weight: bold;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% {opacity: 1;}
+      50% {opacity: 0.6;}
+    }
+
+    /* Sections */
+    section {
+      margin-left: 180px;
+      padding: 60px 30px;
+    }
+
+    .featured-dishes, .about-us, .testimonials {
+      background-color: #fff8f2;
+    }
+
+    .featured-dishes h2, .about-us h2, .testimonials h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #8B3E2F;
+    }
+
+    .dish-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .dish {
+      width: 200px;
+      text-align: center;
+    }
+
+    .dish img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .dish p {
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    .about-us p {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+      text-align: center;
+      color: #5c3a3a;
+      font-size: 1.1rem;
+    }
+
+ 
+    .testimonials blockquote {
+      max-width: 600px;
+      margin: 20px auto;
+      font-style: italic;
+      color: #444;
+      border-left: 4px solid #B0C291;
+      padding-left: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+      .hero, section {
+        margin-left: 0;
+      }
+    }
+    .catering {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 40px;
+    }
+    
+     .toggle-theme {
+      background: none;
+      color: white;
+      border: 1px solid #fff;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .hero {
+      margin-left: 200px;
+      padding: 80px 30px 30px;
+      text-align: center;
+    }
+
+    .hero video {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2em;
+      color: #8B3E2F;
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      font-style: italic;
+      color: #8B3E2F;
+      font-size: 1.1em;
+    }
+
+    .order-now {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #B0C291;
+      color: white;
+      font-weight: bold;
+      font-size: 1em;
+      border-radius: 6px;
+      text-decoration: none;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% {opacity: 1;}
+      50% {opacity: 0.4;}
+    }
+
+    .section {
+      margin-left: 200px;
+      padding: 30px;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html" class="navbar-logo">
+      <img src="image/DesiBitesLogowithorange.jpg" alt="Desi Bites Logo" />
+      <span class="logo-text">Desi Bites</span>
+    </a>
+    <div class="navbar-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html"> Menu</a>
+      <a href="Cart.html">🛒 Cart(<span id="cartCount">0</span>)</a>
+      <a href="menu.html#contact">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="menu.html">🧾 Place Order</a>
+    <a href="Catering.html">👨‍🍳 Catering</a>
+    <a href="menu.html">📜 Full Menu</a>
+    <a href="index.html#testimonials">💬 Testimonials</a>
+     <a href="AboutUs.html">🙋‍♀️AboutUs</a>
+    <a href="menu.html#contact">📞 Contact Us</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Desi Bites</h1>
+      <p>Delicious North Indian dishes, freshly made in our home kitchen.  – Where Homemade Meets Flavor!</p>
+      <a href="menu.html" class="order-btn">🍽️ Order Now</a>
+    </div>
+  </section>
+  <script src="cart-utils.js"></script>
+<script>
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("desiBiteCart")) || [];
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCountEl = document.getElementById("cartCount");
+    if (cartCountEl) {
+      cartCountEl.textContent = totalCount;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
+  <!-- Featured Dishes -->
+  <section class="featured-dishes">
+    <h2>Our Most Loved</h2>
+    <div class="dish-grid">
+      <div class="dish"><img src="image/VadaPav.jpg" alt="Vada Pav"><p>Vada Pav</p></div>
+      <div class="dish"><img src="image/Chicken65.jpg" alt="Chicken 65"><p>Chicken 65</p></div>
+      <div class="dish"><img src="image/Paneerbhurji.jpg" alt="Paneer Bhurji"><p>Paneer Bhurji</p></div>
+      <div class="dish"><img src="image/ChickenChangezi1.jpg" alt="Chicken Changezi"><p>Chicken Changezi</p></div>
+       <div class="dish"><img src="image/ChickenCurry.jpg" alt="Chicken Curry"><p>Chicken Curry</p></div>
+       </div>
+  </section>
+    <!-- Hero + Video -->
+  <div class="hero">
+    <video autoplay muted loop playsinline> 
+  <source src="image/DesiBitesVideo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+    <h1>Delicious Homemade Indian Meals – Fresh, Flavorful!</h1>
+    <p class="tagline">Prepared with  from our kitchen to your plate.</p>
+    <a href="menu.html" class="order-now">✨ Order Now</a>
+  </div>
+ <!-- Catering Section -->
+  <div class="section catering" id="catering">
+    🎈 Planning a party, pooja, or office lunch?  
+    <br />We offer bulk meals & catering packages with ❤️ homemade taste.  
+    <br /><a href="Catering.html" class="order-now" style="margin-top: 15px;">🎉 Request Catering</a>
+  </div>
+  <!-- About Us -->
+  <section class="about-us">
+    <h2>About Desi Bites</h2>
+    <p>Desi Bites is a homestyle North Indian kitchen run with passion and love. All meals are made fresh in small batches – just like home. We believe in quality, tradition, and heartwarming taste. – made just for you.</p>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <h2>What Our Customers Say 💛</h2>
+    <blockquote>“Hello miss Gupta your cutlets were yum and wholesome . Kids enjoyed it and were super healthy as well. Next time I would order for my little one’s birthday from your kitchen !” – Vasavi</blockquote>
+      <blockquote>“Great food as always - mattar paneer was delicious and so was the veg pakora n chicken 65. Last but not the least the plain paranthas n rotis were amazing - thank you .” – Vikram Anand.</blockquote>
+      <blockquote>"Hey Ruby, The food was so fresh 👍
+Tawa Chicken: Tasty with just the right amount of spice. 
+Mutton Curry: Very delicious. Our friend really liked it! The meat was soft and cooked well.
+Thank you so much for taking our last minute orders🥰" - Keerthi</blockquote>
+      <blockquote>""Vada pav was delicious and chutney was perfect!" - Anju V.</blockquote> 
+      <blockquote>"after long time I was tasting gourmet style mutton gray, the pieces are generous enough and juicy" - Bala</blockquote>
+    <blockquote>"Paneer was awesome everyone loved it" - Rajitha V.</blockquote>
+    <blockquote>"Ruby i must say drumsticks r really yum love...dey r so professional r you ah chef dear....chicken 65 is melting in mouth so good ❤❤ I say 10/10 dear🙌🏻❤❤" - Neetu K.</blockquote>
+    <blockquote>"Hey Ruby , Tried Kaffir chicken tikka for the first time and we really enjoyed it. The texture of the chicken was spot on—tender, juicy, and slightly charred on the edges, which added a nice depth of flavor. The lemon really shines through, balancing out the rich spices and creating a lighter, more refreshing dish compared to the usual heavy tikka variations." - Rachana</blockquote>
+    <blockquote>"Thank you for the food! My brother say it taste really good and authentic. We ate all the dosa" - Jie</blockquote>
+  </section>
+ <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+ 
+</body>
+</html>

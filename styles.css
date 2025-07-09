@@ -1,0 +1,196 @@
+/* styles.css */
+body {
+      background-image: url('image\Yellow Green.jpg');
+background-repeat: no-repeat;
+background-position: center center;
+background-attachment: fixed;
+background-size: cover;
+}
+
+.navbar {
+  position: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #d35400;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* small gap, adjust as needed */
+  padding-left: 10px; /* optional, some left padding for navbar */
+  justify-content: space-between;
+  padding: 0 20px;
+  color: white;
+  z-index: 1000;
+}
+
+.navbar-logo {
+   height: 40px;      /* Adjust height as needed */
+  width: auto;       /* Keep the aspect ratio */
+ margin-right: 5px; /* small space between logo and text */
+}
+
+.navbar h1 {
+  font-size: 24px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.navbar div a {
+  color: white;
+  text-decoration: none;
+  margin: 0;
+  font-weight: 24px;
+}
+
+
+.menu-links {
+  display: flex;
+  gap: 25px;
+}
+
+.menu-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.menu-links a:hover {
+  color: #f39c12;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.cart span {
+  font-size: 16px;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 12px;
+  width: 95%;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.menu-item select {
+  margin-top: 10px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.menu-item button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background-color: #d35400;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.menu-item button:hover {
+  background-color: #e67e22;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cart {
+    margin-top: 10px;
+  }
+  .menu-item.card {
+  display: flex;
+  gap: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.menu-img {
+  position: left; /* This allows us to position the image independently of the normal flow */
+   height: 5px;      /* Adjust height as needed */
+  width: auto;       /* Keep the aspect ratio */
+ margin-left: 5px;
+}
+
+.menu-content {
+  flex: 1;
+}
+.sidebar {
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  width: 200px;
+  background: rgba(20, 30, 48, 0.9); /* professional dark shade */
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 2px solid #ccc;
+  color: white;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  color: #ffcc66;
+  font-weight: bold;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  display: block;
+  color: #f5f5f5;
+  text-decoration: none;
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Contact Us box */
+.contact-box {
+  margin-top: 40px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #f8f8f8;
+}
+
+.contact-box h3 {
+  color: #ffcc66;
+  margin-bottom: 10px;
+}
+
+.contact-box p {
+  margin-bottom: 6px;
+}
+}

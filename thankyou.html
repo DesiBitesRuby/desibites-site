@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thank You | Desi Bites</title>
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f9f5f0, #fdfbf8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: #444;
+  }
+  .thank-you-container {
+    background: white;
+    max-width: 480px;
+    width: 100%;
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    animation: fadeIn 0.8s ease forwards;
+  }
+  .thank-you-container img.logo {
+    max-width: 140px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 2.4rem;
+    margin-bottom: 12px;
+    color: #8B3E2F; /* muted maroon */
+  }
+  p.tagline {
+    font-size: 1rem;
+    font-style: italic;
+    color: #8B3E2F;
+    margin-bottom: 24px;
+  }
+  p.message {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  .button {
+    background-color: #B0C291; /* muted green */
+    color: white;
+    padding: 14px 36px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .button:hover,
+  .button:focus {
+    background-color: #9DAE7E;
+    outline: none;
+  }
+  .countdown {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #777;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 480px) {
+    .thank-you-container {
+      padding: 30px 20px;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    p.message {
+      font-size: 1rem;
+    }
+    .button {
+      width: 100%;
+      padding: 14px 0;
+      font-size: 1.1rem;
+    }
+    .thank-you-container img.logo {
+      max-width: 100px;
+      margin-bottom: 15px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="thank-you-container" role="main" aria-labelledby="thankyou-header">
+    <img src="image/DesiBitesLogowithorange.jpg" alt="Desi Bites Logo" class="logo" />
+    <h1 id="thankyou-header">🎉 Thank you for your order!</h1>
+    <p class="tagline">Delicious bites, made with love.</p>
+    <p class="message">Your Desi Bites order has been received successfully. We’ll contact you if needed — enjoy your meal!</p>
+    <a href="index.html" class="button" role="button">Back to Home</a>
+    <p class="countdown">Redirecting in <span id="countdown">8</span> seconds...</p>
+  </div>
+
+  <script>
+    let seconds = 8;
+    const countdownEl = document.getElementById('countdown');
+    const interval = setInterval(() => {
+      seconds--;
+      countdownEl.textContent = seconds;
+      if (seconds <= 0) {
+        clearInterval(interval);
+        window.location.href = 'index.html';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
