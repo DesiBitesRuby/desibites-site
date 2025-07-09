@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Desi Bite Order Form</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: url('image/YellowGreen.jpg') center/cover no-repeat; justify-content: center;
+    align-items: start; padding: 20px; background-size: cover; }
+    form { background: white; padding: 20px; border-radius: 10px; max-width: 700px; margin: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    h2, h3 { color: #008060; }
+    label { display: block; margin-top: 12px; }
+    input, select, textarea { width: 100%; padding: 10px; margin-top: 6px; border: 1px solid #ccc; border-radius: 8px; }
+    .tip-options label { display: inline-block; margin-right: 15px; }
+    .summary-line { font-weight: bold; margin-top: 10px; }
+    button { background: #008060; color: white; border: none; padding: 12px 18px; border-radius: 8px; cursor: pointer; }
+    button:hover { background: #00684a; }
+  </style>
+  
+<style>
+  .scheduler-container {
+    font-family: 'Poppins', sans-serif;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .scheduler-label {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .scheduler-label i {
+    margin-right: 8px;
+    color: #d35400;
+    font-size: 18px;
+  }
+
+  .scheduler-select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .time-popup {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    z-index: 999;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    max-width: 300px;
+  }
+
+  .time-popup.show {
+    display: block;
+    opacity: 1;
+  }
+
+  .time-slot {
+    padding: 8px 12px;
+    margin: 5px 0;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .time-slot:hover {
+    background-color: #e67e22;
+    color: white;
+  }
+
+  .selected-output {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #333;
+  }
+
+  .close-btn {
+    text-align: right;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  .close-btn:hover {
+    color: red;
+  }
+  .scheduler-container {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.scheduler-label {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.scheduler-label i {
+  margin-right: 8px;
+  color: #d35400;
+}
+
+.scheduler-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.time-popup {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  z-index: 999;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  max-width: 300px;
+}
+
+.time-popup.show {
+  display: block;
+  opacity: 1;
+}
+
+.time-slot {
+  padding: 8px 12px;
+  margin: 5px 0;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.time-slot:hover {
+  background-color: #e67e22;
+  color: white;
+}
+
+.selected-output {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #333;
+}
+
+.close-btn {
+  text-align: right;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.close-btn:hover {
+  color: red;
+}
+.special-instructions {
+  margin: 20px 0;
+}
+
+.special-instructions label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.special-instructions textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  resize: vertical;
+  background-color: #fffefc;
+}
+#charCount {
+  font-size: 14px;
+  text-align: right;
+  color: #666;
+  margin-top: 4px;
+}
+
+.order-summary-box {
+  border: 1px solid #ccc;
+  padding: 12px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  white-space: pre-line;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
+.order-summary-box .item-line {
+  margin-bottom: 6px;
+}
+
+.order-summary-box .total-line {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.btn-whatsapp {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #25D366; /* WhatsApp green */
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-whatsapp:hover {
+  background-color: #1ebe5b;
+}
+#whatsapp-link {
+  position: relative;
+  z-index: 9999;
+  pointer-events: auto;
+}
+#whatsapp-link {
+  pointer-events: auto !important;
+}
+
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: #A8323E;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2 8px;
+      color: white;
+      z-index: 1000;
+    }
+
+    .navbar .brand {
+      display: flex;
+      align-items: center;
+    }
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+ 
+  margin: auto;
+}
+   .navbar-logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+   display: flex;
+  align-items: center; /* Align logo & text vertically */
+  
+}
+.navbar-logo img {
+  height: 50px;     /* Change to the max height you want */
+  width: auto;      /* Keep aspect ratio */
+  margin-right: 10px; /* Space between logo & text */
+}
+.logo-text {
+  font-size: 22px;    /* Adjust text size as needed */
+  font-weight: 600;   /* Bold it a bit */
+  color: #fff;        /* Make sure it’s readable */
+  white-space: nowrap;/* Keep it on one line */
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #FFD700; /* gold highlight on hover */
+}
+
+    .navbar h1 {
+      font-size: 22px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 60px; /* below the navbar */
+      left: 0;
+      width: 220px;
+      height: calc(100% - 60px);
+      background: white;
+      color: #7D9A6C; /* muted light green text */
+      padding: 20px 10px;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #7D9A6C;
+      text-align: center;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #7D9A6C;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin: 5px 0;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #f0f0f0;
+    }
+
+    .order-content {
+      margin-left: 220px; /* leave space for sidebar */
+      margin-top: 80px;   /* leave space for navbar */
+      padding: 30px;
+      max-width: 800px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+
+    .order-content h1 {
+      color: #d35400;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .order-content form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .order-content label {
+      margin: 10px 0 5px;
+      font-weight: 600;
+    }
+
+    .order-content input, .order-content textarea {
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .order-content button {
+      background-color: #e67e22;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .order-content button:hover {
+      background-color: #d35400;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+      .order-content {
+        margin: 80px auto;
+        width: 90%;
+      }
+    }
+@media screen and (max-width: 768px) {
+  /* Hide Sidebar */
+  .sidebar {
+    display: none;
+  }
+
+  /* Navbar stack */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .navbar-logo {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .navbar-links a {
+    display: block;
+    margin: 8px 0;
+    font-size: 16px;
+  }
+
+  /* Hero Section */
+  .hero {
+    margin-left: 0;
+    padding: 40px 20px;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .order-btn,
+  .order-now {
+    font-size: 1rem;
+    padding: 10px 18px;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Form Fields */
+  input, textarea, select {
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* WhatsApp and Submit Buttons */
+  #whatsapp-link,
+  button[type="submit"] {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    margin-top: 12px;
+  }
+
+  /* Section Padding */
+  section, .section, .order-container {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  /* Dish Grid */
+  .dish-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dish {
+    width: 90%;
+  }
+
+  /* Video */
+  .hero video {
+    max-height: 250px;
+  }
+
+  /* Testimonials */
+  .testimonials blockquote {
+    font-size: 0.95rem;
+    padding-left: 12px;
+  }
+
+  /* Cart count & toggle theme */
+  .toggle-mode {
+    top: 0.5em;
+    right: 0.5em;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+<!-- Navbar -->
+  <div class="navbar">
+    <div class="brand">
+      <a href="index.html" class="navbar-logo">
+      <img src="image/DesiBitesLogowithorange.jpg" alt="Desi Bites Logo">
+       <span class="logo-text">Desi Bites</span>
+      </a>
+    </div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="Catering.html">Catering</a>
+       <a href="Cart.html">🛒 Cart (<span id="cartCount">0</span>)</a>
+      <a href="menu.html#contact">Contact Us</a>
+      </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+   <a href="menu.html">🧾 Place Order</a>
+    <a href="Catering.html">👨‍🍳 Catering</a>
+    <a href="menu.html">📜 Full Menu</a>
+    <a href="index.html#testimonials">💬 Testimonials</a>
+    <a href="AboutUs.html">🙋‍♀️AboutUs</a>
+    <a href="menu.html#contact">📞 Contact</a>
+  </div>
+
+
+<form id="orderForm">
+  <h2>Desi Bites – Place Your Order</h2>
+
+  <!-- 1. Order Details -->
+  <section>
+    <h3>1. Order Details</h3>
+    <label>Order Type:
+      <select name="order_type" required>
+        <option value="">Select...</option>
+        <option value="Pickup">Pickup</option>
+        <option value="Curbside">Curbside</option>
+      </select>
+    </label>
+<!-- 📅 Scheduled For -->
+<div class="scheduler-container">
+  <label class="scheduler-label">
+    <i class="fa fa-calendar"></i> Scheduled For:
+    <input type="hidden" name="scheduled_for" id="scheduled_for">
+  </label>
+
+ <select id="dateSelect" class="scheduler-select"></select>
+
+  <div id="timePopup" class="time-popup">
+    <div class="close-btn" onclick="closeTimePopup()">✖</div>
+    <!-- Time options will go here -->
+  </div>
+
+  <div class="selected-output" id="selectedOutput"></div>
+  
+</div>
+ <!-- Font Awesome for calendar icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+ 
+
+ 
+  <!-- 2. Contact Info -->
+  <section>
+    <h3>2. Contact Info</h3>
+    <label>Your Name: <input type="text" name="customer_name" required></label>
+    <label>Email: <input type="email" name="email" required></label>
+    <label>Phone: <input type="tel" name="phone" required></label>
+    
+    
+
+  </section>
+
+  <!-- 3. Tip    
+  <section>
+    <h3>3. Add a Tip</h3>
+    <div class="tip-options">
+      <label><input type="radio" name="tip" value="15"> 15%</label>
+      <label><input type="radio" name="tip" value="18"> 18%</label>
+      <label><input type="radio" name="tip" value="20"> 20%</label>
+      <label><input type="radio" name="tip" value="custom"> Custom:</label>
+      <input type="number" name="custom_tip" placeholder="Enter custom tip">
+      <button type="button" onclick="clearTip()">Clear Tip</button>
+    </div>
+  </section>-->
+  
+
+  <!-- 4. Gift Card    <section>
+    <h3>4. Apply Gift Card</h3>
+    <label>Gift Card Code: <input type="text" name="gift_card"></label>
+  </section> -->
+
+
+  <!-- 5. Payment -->
+  <section>
+    <h3>5. Payment</h3>
+    <label><input type="radio" name="payment_method" value="Cash" required> Pay in Cash (at Pickup)</label><br>
+    
+  </section>
+  <div class="special-instructions">
+  <label for="specialNote">Special Instructions:</label>
+  <textarea id="specialNote" name="special_instructions" placeholder="Add a note here"></textarea>
+  <div id="charCount">0 / 500</div>
+</div>
+
+  <!-- 6. Order Summary -->
+  <section>
+    <h3>6. Order Summary</h3>
+    <p><strong>From:</strong> Desi Bites – Brentwood</p>
+    <p><strong>Scheduled:</strong> <span id="summaryDateTime">--</span></p>
+    <p><strong>Items:</strong> <span id="itemCount">0</span></p>
+    <div id="visualOrderSummary" class="order-summary-box"></div>
+    <p><a href="Cart.html" target="_blank">View Order</a></p>
+   
+    <div class="summary-line">Subtotal: <span id="subtotal">$0.00</span></div>
+    <div class="summary-line">Tax (0.00%): <span id="tax">$0.00</span></div>
+    <div class="summary-line" id="totalDisplay">Total: $0.00</div>
+    
+<input type="hidden" name="scheduled_for" id="scheduledDatetime">
+<input type="hidden" name="subtotal" id="subtotal"> 
+ <input type="hidden" name="order_summary" id="order_summary">
+<input type="hidden" name="total_amount" id="total_amount">
+   <input type="hidden" name="order_id" id="orderIDField">  
+  </section>
+ 
+  <!-- 7. Submit -->
+   <button type="submit">Place Order via Email</button>
+   
+  <input type="hidden" id="submitType" name="submitType" value="email">
+</form>
+<button id="whatsapp-link" type="button">Order via WhatsApp</button>
+
+<div id="notification" style="
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #323232;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 9999;
+  max-width: 300px;
+"></div>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cart = JSON.parse(localStorage.getItem("desiBiteCart")) || [];
+
+  const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const tax = +(subtotal * 0).toFixed(2);
+  const total = +(subtotal + tax).toFixed(2);
+
+  const orderSummaryField = document.getElementById("order_summary");
+  const visualOrderSummary = document.getElementById("visualOrderSummary");
+
+  let summaryText = "";
+  let summaryHtml = "";
+
+  cart.forEach(item => {
+    const line = `${item.name} (${item.size}) x ${item.quantity} — $${(item.price * item.quantity).toFixed(2)}`;
+    summaryText += line + "\n";
+    summaryHtml += `<div class="item-line">${line}</div>`;
+  });
+
+  if (orderSummaryField) orderSummaryField.value = summaryText.trim();
+  if (visualOrderSummary) visualOrderSummary.innerHTML = summaryHtml;
+
+  document.getElementById("itemCount").textContent = itemCount;
+  document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
+  document.getElementById("totalDisplay").textContent = `Total: $${total.toFixed(2)}`;
+  document.getElementById("total_amount").value = total.toFixed(2);
+
+  // Initialize Date Dropdown
+  const dateSelect = document.getElementById("dateSelect");
+  const timePopup = document.getElementById("timePopup");
+  const selectedOutput = document.getElementById("selectedOutput");
+  const hiddenField = document.getElementById("scheduledDatetime");
+
+  const timeSlots = ["5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM"];
+
+  function generateDateOptions() {
+    const now = new Date();
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(now);
+      d.setDate(now.getDate() + i);
+      const label = d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+      const option = document.createElement("option");
+      option.value = d.toISOString().split('T')[0];
+      option.textContent = label;
+      if (i === 0) option.selected = true;
+      dateSelect.appendChild(option);
+    }
+  }
+
+  generateDateOptions();
+  dateSelect.addEventListener("change", openTimePopup);
+
+  function openTimePopup() {
+    timePopup.innerHTML = `<div class="close-btn" onclick="closeTimePopup()">✖</div>`;
+    const selectedDate = dateSelect.value;
+    const now = new Date();
+    const selected = new Date(selectedDate);
+    const isToday = selected.toDateString() === now.toDateString();
+
+    timeSlots.forEach(time => {
+      let [hour, min] = time.replace(" PM", "").split(":").map(Number);
+      hour += 12;
+
+      const slot = new Date(selected);
+      slot.setHours(hour, min);
+
+      if (isToday && slot <= now) return;
+
+      const div = document.createElement("div");
+      div.className = "time-slot";
+      div.textContent = time;
+      div.onclick = () => selectTime(time);
+      timePopup.appendChild(div);
+    });
+
+    timePopup.classList.add("show");
+  }
+
+  function selectTime(time) {
+    const label = dateSelect.options[dateSelect.selectedIndex].textContent;
+    const value = dateSelect.value;
+    const combined = `${label} at ${time}`;
+    const saveValue = `${value} ${time}`;
+
+    selectedOutput.textContent = `You selected: ${combined}`;
+    hiddenField.value = saveValue;
+    document.getElementById("summaryDateTime").textContent = combined;
+
+    closeTimePopup();
+  }
+
+  function closeTimePopup() {
+    timePopup.classList.remove("show");
+  }
+
+  //EmailJs
+emailjs.init("hc3qcqFYa8W7khZo-");
+
+const form = document.getElementById("orderForm");
+if (!form) {
+  console.error("❌ Order form not found.");
+  throw new Error("Order form missing in HTML!");
+}
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const submitType = document.getElementById("submitType").value;
+  if (submitType !== "email") return;
+
+  const scheduledValue = document.getElementById("scheduledDatetime").value;
+  if (!scheduledValue) {
+    alert("⚠️ Please select both date and time.");
+    return;
+  }
+
+  const order = collectOrderDetails();
+  if (!order) return;
+
+  // Update hidden inputs before sending email
+  form.querySelector('[name="order_summary"]').value = order.orderSummary;
+  form.querySelector('[name="total_amount"]').value = order.total.toFixed(2);
+  form.querySelector('[name="scheduled_for"]').value = order.scheduled;
+  form.querySelector('[name="order_id"]').value = order.orderID;
+
+  // Log to Google Sheets
+  logToGoogleSheet(order, "EmailJS")
+    .then(() => showNotification("✅ Order logged successfully.", "success"))
+    .catch((error) => {
+      console.error("❌ Google Sheets log failed:", error);
+      showNotification("⚠️ Order placed but log failed. Contact support.", "error");
+    });
+
+  // Send admin email
+  emailjs.sendForm("service_98ut097", "template_jep4gzw", form)
+    .then(() => console.log("Admin email sent"))
+    .catch((error) => {
+      console.error("❌ Admin email send failed:", error);
+    });
+
+  // Send customer confirmation email
+  emailjs.sendForm("service_98ut097", "template_e4favi6", form)
+    .then(() => {
+      alert("Order placed and confirmation sent!");
+      localStorage.removeItem("desiBiteCart");
+      window.location.href = "thankyou.html";
+    })
+    .catch((error) => {
+      console.error("❌ Customer email send failed:", error);
+      alert("❌ Failed to send confirmation email. Please contact support.");
+    });
+});
+
+function collectOrderDetails() {
+  const form = document.getElementById("orderForm");
+  if (!form) {
+    alert("⚠️ Order form not found.");
+    return null;
+  }
+
+  const name = form.customer_name?.value.trim() || "";
+  const email = form.email?.value.trim() || "";
+  const phone = form.phone?.value.trim() || "";
+  const instructions = form.special_instructions?.value.trim() || "";
+  const scheduled = document.getElementById("scheduledDatetime")?.value || "";
+
+  const cart = JSON.parse(localStorage.getItem("desiBiteCart")) || [];
+
+  if (!name || !email || !phone || !scheduled || cart.length === 0) {
+    alert("❗ Please fill in all required fields and add items to cart.");
+    return null;
+  }
+
+  const orderID = "DB-" + Date.now().toString(36).toUpperCase();
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const orderSummary = cart.map(item =>
+    `${item.quantity}x ${item.size ? item.size + " " : ""}${item.name} - $${(item.price * item.quantity).toFixed(2)}`
+  ).join("\n");
+
+  return {
+    name, email, phone, instructions,
+    scheduled, orderID, cart, total, orderSummary
+  };
+}
+
+function logToGoogleSheet(order, source) {
+  const formDataEmail = new FormData();
+  formDataEmail.append("orderID", order.orderID);
+  formDataEmail.append("name", order.name);
+  formDataEmail.append("email", order.email);
+  formDataEmail.append("phone", order.phone);
+  formDataEmail.append("summary", order.orderSummary);
+  formDataEmail.append("total", order.total.toFixed(2));
+  formDataEmail.append("scheduled", order.scheduled);
+  formDataEmail.append("instructions", order.instructions);
+  formDataEmail.append("source", source);
+
+  return fetch("https://script.google.com/macros/s/AKfycbw_Vd4kU0EX7YbyhKAwbFyk2ZCtBFmflOs_d8hCpB44AT2nHI0ufw0Zant1T7A74pBo/exec", {
+    method: "POST",
+    body: formDataEmail
+  })
+    .then(res => {
+      if (!res.ok) throw new Error("Non-OK HTTP response");
+      return res.text();
+    })
+    .then(result => {
+      console.log("✅ Google Sheets log:", result);
+      return result;
+    });
+}
+
+function showNotification(message, type = "info") {
+  const notification = document.getElementById("notification");
+  notification.innerText = message;
+  notification.style.backgroundColor = type === "error" ? "#D32F2F" : "#388E3C";
+  notification.style.display = "block";
+  setTimeout(() => notification.style.display = "none", 4000);
+}
+
+});
+
+
+  
+  // ✅ WhatsApp Order Button
+   
+document.getElementById("whatsapp-link").addEventListener("click", function (e) {
+    e.preventDefault();
+    
+    const order = collectOrderDetails();
+    if (!order) return;
+
+    const scheduledText = new Date(order.scheduled).toLocaleString("en-US", {
+    	 weekday: "long",   // Sunday
+    	  month: "long",     // June
+    	  day: "numeric",    // 23
+    	  hour: "numeric",   // 5
+    	  minute: "2-digit", // 30
+    	  hour12: true       // PM
+    	});
+    
+
+    const message =
+    	`🙋 Order from ${order.name}\n` + 
+    	`🆔 Order ID: ${order.orderID}\n\n` +
+
+    	`📋 Summary:\n` +
+    	order.orderSummary
+    	  .split("\n")
+    	  .map(line => `• ${line}`)
+    	  .join("\n") + "\n\n" +
+
+    	`💰 Total: $${order.total.toFixed(2)}\n` +
+    	`📅 Pickup Time: ${scheduledText}\n` +
+
+    	(order.instructions ? `📝 Note: ${order.instructions}\n` : "") +
+
+    	(order.total > 2 ? `\n\nQuel délice ! – What a delight 🍽️` : "")
+    // Open WhatsApp
+    const whatsappURL = `https://wa.me/19808006909?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, "_blank");
+
+    // Log to Google Sheets
+    logToGoogleSheet(order, "WhatsApp");
+  });
+
+  function collectOrderDetails() {
+    const name = document.querySelector('[name="customer_name"]')?.value.trim();
+    const email = document.querySelector('[name="email"]')?.value.trim();
+    const phone = document.querySelector('[name="phone"]')?.value.trim();
+    const instructions = document.querySelector('[name="special_instructions"]')?.value.trim() || "";
+    const scheduled = document.getElementById("scheduledDatetime")?.value;
+    const cart = JSON.parse(localStorage.getItem("desiBiteCart")) || [];
+
+    if (!name || !email || !phone ||  !scheduled || cart.length === 0) {
+      alert("❗ Please fill in all required fields and add items to cart.");
+      return null;
+    }
+
+    const orderID = "DB-" + Date.now().toString(36).toUpperCase();
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const orderSummary = cart.map(item =>
+      `${item.quantity}x ${item.size ? item.size + " " : ""}${item.name} - $${(item.price * item.quantity).toFixed(2)}`
+    ).join("\n");
+
+    return {
+      orderID, name, email, phone, instructions,
+      scheduled, total, orderSummary
+    };
+  }
+
+  function logToGoogleSheet(order, source) {
+    const formData = new URLSearchParams();
+    formData.append("orderID", order.orderID);
+    formData.append("name", order.name);
+    formData.append("email", order.email);
+    formData.append("phone", order.phone);
+    formData.append("summary", order.orderSummary);
+    formData.append("total", order.total.toFixed(2));
+    formData.append("scheduled", order.scheduled);
+    formData.append("instructions", order.instructions);
+    formData.append("source", source);
+
+    fetch("https://script.google.com/macros/s/AKfycbw_Vd4kU0EX7YbyhKAwbFyk2ZCtBFmflOs_d8hCpB44AT2nHI0ufw0Zant1T7A74pBo/exec", {
+      method: "POST",
+      body: formData
+    })
+      .then(res => res.text())
+      .then(result => console.log("✅ Google Sheets log:", result))
+      .catch(err => console.error("❌ Google Sheets error:", err));
+  }
+</script>
+<script src="cart-utils.js"></script>
+<script>
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("desiBiteCart")) || [];
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCountEl = document.getElementById("cartCount");
+    if (cartCountEl) {
+      cartCountEl.textContent = totalCount;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
+</body>
+</html>
