@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Desi Bites</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('image/YellowGreen.jpg') center/cover no-repeat;
+      color: #3b2e2e;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #A8323E;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .navbar-logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .navbar-links a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-links a:hover {
+      color: #FFD700;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 180px;
+      height: 100%;
+      background-color: #fff;
+      border-right: 1px solid #eee;
+      padding-top: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #55714B;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .sidebar a:hover {
+      background-color: #f4f4f4;
+    }
+
+
+    /* Photo + Quote */
+    .founder {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .founder img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #d35400;
+      margin-bottom: 15px;
+    }
+
+    .founder-name {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .founder-quote {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+      .container {
+        margin-left: 0;
+        padding: 30px 20px;
+      }
+    }
+    .about-section {
+  max-width: 850px;
+  margin: 80px auto;
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  color: #4a3d3d;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.7;
+}
+
+.about-section h1 {
+  color: #d35400;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2em;
+}
+
+.about-section p {
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+
+.about-section .location {
+  text-align: center;
+  font-style: italic;
+  font-weight: 500;
+  margin-top: 25px;
+  color: #6a6a6a;
+}
+/* mobile.css */
+
+/* Mobile styles for About Us page */
+
+@media (max-width: 768px) {
+  /* Hide Sidebar on tablets and smaller */
+  .sidebar {
+    display: none !important;
+  }
+
+  /* Navbar */
+  .navbar-links {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
+  }
+  .navbar-links a {
+    margin-left: 0 !important;
+    font-size: 1.1rem !important;
+  }
+  .navbar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 1rem 1.5rem !important;
+  }
+
+  /* About section */
+  .about-section {
+    margin: 20px 15px !important;
+    padding: 25px 20px !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+  }
+
+  /* Founder section */
+  .founder {
+    margin-top: 20px !important;
+    padding: 0 15px !important;
+  }
+  .founder img {
+    width: 90px !important;
+    height: 90px !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Our story */
+  .our-story h2 {
+    font-size: 1.5rem !important;
+  }
+  .our-story p {
+    font-size: 1rem !important;
+    margin: 15px 15px 30px !important;
+  }
+
+  /* Location text */
+  .location {
+    font-size: 0.9rem !important;
+    margin-top: 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-links a {
+    font-size: 1rem !important;
+  }
+  .about-section h1 {
+    font-size: 1.6rem !important;
+  }
+  .founder-name {
+    font-size: 1rem !important;
+  }
+  .founder-quote {
+    font-size: 0.85rem !important;
+  }
+}
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="index.html" class="navbar-logo">
+      <img src="image/DesiBitesLogowithorange.jpg" alt="Desi Bites Logo" />
+      <span class="logo-text">Desi Bites</span>
+    </a>
+    <div class="navbar-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="Catering.html">Catering</a>
+      <a href="Cart.html">🛒 Cart (<span id="cartCount">0</span>)</a>
+       <a href="menu.html#contact">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="OrderForm.html">🧾 Place Order</a>
+    <a href="Catering.html">👨‍🍳 Catering</a>
+    <a href="menu.html">📜 Full Menu</a>
+    <a href="index.html#testimonials">💬 Testimonials</a>
+    <a href="AboutUs.html">🙋‍♀️AboutUs</a>
+    <a href="menu.html#contact">📞 Contact</a>
+  </div>
+
+  <!-- About Content -->
+ <div class="about-section">
+  <h1>Welcome to Desi Bites</h1>
+  <p> 
+    Hey everyone! I’m excited to introduce my homemade food business – Desi Bites! I prepare fresh, 
+    flavorful, and authentic North Indian meals right from my kitchen, using handpicked ingredients 
+    and traditional recipes for that perfect homestyle taste.
+  </p>
+
+  <p>
+    Whether you’re craving a comforting curry, festive chaat, or fluffy roti – check out my menu and let me know what you'd love to try. 
+    I’m so grateful for your support and can’t wait for you to enjoy it!
+  </p>
+
+  <p>
+    Desi Bites is more than just food — it's about sharing joy, celebrating tradition, and creating connections over every meal. 
+    Each dish is cooked in small batches, with love and care — just like home.
+  </p>
+
+  <p>
+    What began as sharing lunchboxes with friends soon became a growing circle of food lovers. 
+    Today, Desi Bites continues to grow through word of mouth, filled with flavor and heart. 
+    From my kitchen to yours — thank you for being part of the journey.
+  </p>
+
+  <div class="location">
+    📍 Location: Chandler Dr., Brentwood, CA
+  </div>
+</div>
+
+    <!-- Our Story -->
+<div class="our-story">
+  <h2 style="text-align: center; color: #b05d3c; margin-top: 40px;">Our Story</h2>
+  <p style="font-size: 1.05rem; line-height: 1.6; color: #5b4646; text-align: center; max-width: 700px; margin: auto;">
+    Desi Bites started in my home kitchen with a simple idea — to bring comforting, homemade North Indian meals to local families. What began as sharing lunchboxes with neighbors quickly turned into a growing circle of happy food lovers. 
+    <br><br>
+    Every dish is made with hand-ground spices, fresh ingredients, and the same love we put into feeding our own family. Whether it's a Sunday meal, festival platter, or weekday dinner — I hope each bite feels like home.
+  </p>
+</div>
+
+    <!-- Founder Section -->
+    <div class="founder">
+      <img src="image/rubypicdesibites.jpg" alt="Founder Photo">
+      <div class="founder-name">Ruby Gupta</div>
+      <div class="founder-quote">“Homemade food is not just about taste—it's about love, tradition, and care.”</div>
+    </div>
+  </div>
+<script src="cart-utils.js"></script>
+<script>
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("desiBiteCart")) || [];
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCountEl = document.getElementById("cartCount");
+    if (cartCountEl) {
+      cartCountEl.textContent = totalCount;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+</body>
+</html>
