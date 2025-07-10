@@ -1,0 +1,27 @@
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .menu-grid,
+  .about-section,
+  .container,
+  .catering-container {
+    padding: 20px;
+    margin-left: 0;
+  }
+  .btn,
+  button,
+  input,
+  textarea {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
