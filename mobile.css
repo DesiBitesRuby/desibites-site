@@ -1,0 +1,247 @@
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('image/YellowGreen.jpg') center/cover no-repeat fixed;
+  color: #3b2e2e;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #A8323E;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+.navbar-logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+.navbar-links {
+  display: flex;
+  flex-wrap: wrap;
+}
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.navbar-links a:hover {
+  color: #FFD700;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 180px;
+  height: 100%;
+  background-color: #fff;
+  border-right: 1px solid #eee;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+  z-index: 900;
+}
+.sidebar a {
+  display: block;
+  padding: 12px 20px;
+  color: #55714B;
+  text-decoration: none;
+  font-weight: 500;
+}
+.sidebar a:hover {
+  background-color: #f4f4f4;
+}
+
+/* Containers (About, Catering, Order) */
+.container,
+.about-section,
+.catering-container {
+  max-width: 850px;
+  margin: 80px auto;
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  color: #4a3d3d;
+}
+
+/* Headings */
+h1, h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #d35400;
+}
+
+/* Form Elements */
+form label {
+  display: block;
+  margin: 15px 0 5px;
+  font-weight: bold;
+}
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+button {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* Founder Photo */
+.founder {
+  text-align: center;
+  margin-top: 40px;
+}
+.founder img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #d35400;
+}
+.founder-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+.founder-quote {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 8px;
+}
+
+/* Hero section */
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(139, 62, 47, 0.3)), url('image/YellowGreen.jpg') center/cover no-repeat;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #FFD700;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  animation: fadeInDown 1s ease forwards;
+}
+.hero p {
+  max-width: 700px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #fff;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+footer a {
+  color: #FFD700;
+  text-decoration: none;
+}
+
+/* ---------------- MOBILE STYLES ---------------- */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+  .navbar-links {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .navbar-links a {
+    display: block;
+    padding: 8px 0;
+    margin-left: 0;
+  }
+  .sidebar {
+    display: none;
+  }
+  .container,
+  .about-section,
+  .catering-container {
+    margin: 20px;
+    padding: 20px;
+    width: calc(100% - 40px);
+  }
+  input,
+  textarea,
+  select,
+  button {
+    width: 100%;
+    font-size: 1rem;
+  }
+  .hero {
+    height: auto;
+    padding: 40px 20px;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .founder img {
+    width: 100px;
+    height: 100px;
+  }
+}
