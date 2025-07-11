@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DESI BITES BY Ruby's Kitchen | Homemade Delights</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  
+<link rel="stylesheet" href="mobile.css" media="screen and (max-width: 768px)">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('image/YellowGreen.jpg') center/cover no-repeat; padding: 10px;
+      color: #333;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: #A8323E;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      color: white;
+      z-index: 1000;
+    }
+
+    .navbar .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      height: 40px;
+      width: auto;
+      margin-right: 10px;
+    }
+
+     .navbar-logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+ .navbar-links a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-links a:hover {
+      color: #FFD700;
+    }
+
+    .sidebar {
+    position: fixed;
+     
+      top: 60px;
+      bottom: 0;
+      width: 200px;
+      background-color: #f8f8f8;
+      padding: 20px;
+      height: calc(100vh - 60px);
+      border-right: 2px solid #eee;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar a {
+      display: block;
+      color: #1B6F3E;
+      text-decoration: none;
+      margin: 10px 0;
+      padding: 6px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    .sidebar a:hover {
+      background: rgba(0,0,0,0.2);
+    }
+
+    .content {
+      margin-top: 60px;
+      margin-left: 200px;
+      padding: 20px;
+      flex: 1;
+    }
+    
+
+    .menu-section {
+      margin-top: 20px;
+    }
+
+    .menu-item {
+      background-color: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .menu-item h4 {
+      color: #d35400;
+      margin-top: 10px;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff8e1;
+      padding: 30px;
+      border: 2px solid #d35400;
+      border-radius: 10px;
+    }
+
+    .popup button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .cta-btn {
+      background-color: #e74c3c;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .cta-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .cart-options {
+      margin-top: 10px;
+    }
+
+    select, button {
+      padding: 8px;
+      margin-right: 10px;
+    }
+    
+    /* Zoom overlay background */
+.zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Zoomed image */
+.zoom-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #000;
+  cursor: zoom-out;
+}
+.whatsapp-join {
+    display: inline-flex;
+    align-items: center;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: background 0.3s ease;
+  }
+
+  .whatsapp-join img {
+    height: 24px;
+    width: 24px;
+    margin-right: 10px;
+  }
+
+  .whatsapp-join:hover {
+    background-color: #1ebe5d;
+  }
+    .menu-heading {
+    text-align: center;
+    padding: 40px 15px;
+    background-color: #fff8f2;
+    background-image: url('image/DesiBitesLogowithorange.jpg'); /* Optional background image */
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 60px;
+  }
+
+  .menu-heading h2 {
+    font-size: 2.5rem;
+    color: #8B3E2F;
+   
+  }
+
+  .menu-heading p {
+    font-size: 1.2rem;
+    color: #5a4d4d;
+    padding: 0 5px;
+  }
+
+  @media screen and (max-width: 768px) {
+  body {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+  .sidebar {
+    display: none; /* Hide sidebar on mobile */
+  }
+
+  .content {
+    margin: 0;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .menu-heading {
+    padding: 30px 15px;
+    text-align: center;
+    background-position: left;
+    background-size: 120px;
+  }
+
+  .menu-heading h2 {
+    font-size: 1.6rem;
+  }
+
+  .menu-heading p {
+    font-size: 1rem;
+  }
+}
+
+  
+ 
+  </style>
+</head>
+<body onload="AOS.init(); updateCartCount();">
+
+<body onload="showPopup()">
+  <!-- Top Navbar -->
+  <div class="navbar">
+    <div class="brand">
+      <img src="image/DesiBitesLogowithorange.jpg" alt="Logo" class="navbar-logo" />
+      <h1>DESI BITE</h1>
+    </div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="Catering.html">Catering</a>
+      <a href="Cart.html">🛒 Cart (<span id="cartCount">0</span>)</a>
+       <a href="#contact">Contact Us</a>
+    </div>
+  </div>
+  
+  
+
+  <!-- Sidebar  <li><a href="OrderForm.html">Order Now</a></li>-->
+  <div class="sidebar">
+    <h3>📜Menu</h3>
+    <ul>
+      <li><a href="Catering.html">👨‍🍳Catering</a></li>
+      <li><a href="#appetizers">🥟Appetizers</a></li>
+      <li><a href="#veg">🥬Veg Items</a></li>
+      <li><a href="#nonveg">🍗Non-Veg Items</a></li>
+      <li><a href="#Bread">🥖Bread</a></li>
+      <li><a href="#Grains">🍚Grains</a></li>
+       <li><a href="#Sweet">🍮Sweet</a></li>
+        <li><a href="#Drink">🥤Drink</a></li>
+      <li><a href="AboutUs.html">🙋‍♀️AboutUs</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="menucontent">
+  <div class="content">
+   <section class="menu-heading" style="text-align: center; padding: 30px 20px; background-color: #fff8f2;">
+  <h2 style="font-size: 2rem; color: #8B3E2F;">🏠 Our Homestyle North Indian Menu</h2>
+  <p style="font-size: 1.1rem; color: #5a4d4d; max-width: 700px; margin: auto;">
+    Homemade meals crafted with gratitude — fresh, flavorful, and unforgettable.
+  </p>
+</section>
+
+    <!-- Popup -->
+    <div class="popup" id="offerPopup">
+      <h2>Special Offer!</h2>
+      <p>Get <strong>20% OFF</strong> your first order. Use code: <strong>WELCOME20</strong></p>
+      <button onclick="closePopup()">Close</button>
+    </div>
+    
+    <!-- Appetizers -->
+<div id="appetizers" class="menu-section">
+  <h3>Appetizers</h3>
+
+  <div class="menu-item">
+     <img src="image/VadaPav.jpg" alt="Vada Pav"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Vada Pav</h4>
+    <p>Spicy potato fritter in bun – Mumbai style.</p>
+    <button onclick="addToCart('Vada Pav', 8)">
+      Add to Cart - $8
+    </button>
+     
+   
+  </div>
+
+  <div class="menu-item">
+    <img src="image/Gobi65.jpg" alt="Gobi 65"  style="width:8%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Gobi 65</h4>
+    <p>Spicy fried cauliflower with South Indian twist.</p>
+    <button onclick="addToCart('Gobi 65', 12)">Add to Cart - $12</button>
+  </div>
+
+  <div class="menu-item">
+     <img src="image/chaat.jpg" alt="Tikki Chaat"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable"  />
+    <h4>Tikki Chaat</h4>
+    <p>Potato patties topped with chutneys & yogurt.</p>
+    <button onclick="addToCart('Tikki Chaat', 8)">Add to Cart- $8</button>
+  </div>
+
+  <div class="menu-item">
+     <img src="image/chaat .jpg" alt="Samosa Chaat"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Samosa Chaat</h4>
+    <p>Crispy samosa crushed & topped with chutneys.</p>
+    <button onclick="addToCart('Samosa Chaat', 10)">Add to Cart- $10</button>
+  </div>
+
+  <div class="menu-item">
+     <img src="image/CholeBhature1.jpg" alt="Chole Bhature"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Chole Bhature</h4>
+    <p>Chickpeas with fried bread.</p>
+    <button onclick="addToCart('Chole Bhature', 10)">Add to Cart- $10</button>
+  </div>
+
+  <div class="menu-item">
+    <<img src="image/PaneerCutlet.jpg" alt="Paneer Cutlet"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Paneer Cutlet</h4>
+    <p>Crispy patties with paneer stuffing.</p>
+    <button onclick="addToCart('Paneer Cutlet', 10)">Add to Cart- $10</button>
+  </div>
+
+  <div class="menu-item">
+     <img src="image/breadPakora.jpg" alt="Bread Pakora"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Bread Roll</h4>
+    <p>Stuffed bread dipped in spiced batter and fried.</p>
+    <button onclick="addToCart('Bread Roll', 8)">Add to Cart- $18</button>
+  </div>
+</div>
+
+<!-- Non-Veg Appetizers -->
+<div class="menu-section">
+  <h3>Non-Veg Appetizers</h3>
+
+  <div class="menu-item">
+   <img src="image/Chicken65.jpg" alt="Chicken65"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+  <h4>Chicken 65</h4>
+  <p>Deep-fried spicy chicken bites.<br><strong>Goes well with Roti or Rice.</strong></p>
+            <div class="cart-options">
+          <select id="size-Chicken-65">
+            <option value="Half">Half - $14</option>
+            <option value="Full">Full - $20</option>
+            <option value="Large">Large - $26</option>
+          </select>
+          <button onclick="addSizedItemToCart('Chicken 65', 'size-Chicken-65')">Add to Cart</button>
+</div>
+
+  <div class="menu-item">
+     <img src="image/KathiChickenRoll.jpg" alt="Chicken Kathi Roll"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Chicken Kathi Roll</h4>
+    <p>Marinated chicken in paratha wrap.</p>
+   <button onclick="addToCart('Chicken Kathi Roll', 12)">Add to Cart- $12</button>
+ 
+  </div>
+
+  <div class="menu-item">
+     <img src="image/Kathiroll.jpg" alt="Kathi Roll"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Chicken Roll</h4>
+    <p>Spiced chicken roll with sauce & onions.</p>
+    <button onclick="addToCart('Chicken Roll', 12)">Add to Cart- $12</button>
+  </div>
+
+  <div class="menu-item">
+     <img src="image/KathiChickenRoll.jpg" alt="KATHI Chicken Roll"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable"  />
+    <h4>Egg Roll</h4>
+    <p>Omelette wrapped in paratha with sauces.</p>
+    <button onclick="addToCart('Egg Roll', 10)">Add to Cart- $10</button>
+  </div>
+</div>
+
+    <!-- Veg -->
+    <div id="veg" class="menu-section">
+      <h3>Vegetarian Items</h3>
+
+      <div class="menu-item">
+        <h4>Palak Paneer</h4>
+        <p>Fresh spinach and cottage cheese cooked in spices.</p>
+        <div class="cart-options">
+          <select id="size-palak-paneer">
+            <option value="Half">Half - $14</option>
+            <option value="Full">Full - $20</option>
+            <option value="Large">Large - $25</option>
+          </select>
+          <button onclick="addSizedItemToCart('Palak Paneer', 'size-palak-paneer')">Add to Cart</button>
+        </div>
+      </div>
+    
+    <div class="menu-item">
+     <img src="image/MatarPaneer.jpg" alt="Matar Paneer"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+  <h4>Matar Paneer</h4>
+  <p>Green peas and paneer cooked in spiced tomato-onion gravy.</p>
+  <div class="cart-options">
+    <select id="size-matar-paneer">
+      <option value="Half">Half - $13</option>
+      <option value="Full">Full - $18</option>
+      <option value="Large">Large - $24</option>
+    </select>
+    <button onclick="addSizedItemToCart('Matar Paneer', 'size-matar-paneer')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="menu-item">
+ <img src="image/Paneerbhurji.jpg" alt="Paneer Phurji"  style="width:9%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+  <h4>Paneer Bhurji</h4>
+  <p>Scrambled paneer sautéed with onions, tomatoes, and spices.</p>
+  <div class="cart-options">
+    <select id="size-paneer-bhurji">
+      <option value="Half">Half - $14</option>
+      <option value="Full">Full - $20</option>
+      <option value="Large">Large - $25</option>
+    </select>
+    <button onclick="addSizedItemToCart('Paneer Bhurji', 'size-paneer-bhurji')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="menu-item card">
+   <img src="image/PaneerTikkaMasala.jpg" alt="Paneer Tikka Masala"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable"  />
+  <div class="menu-content">
+    <h4>Paneer Tikka Masala</h4>
+    <p>Grilled paneer chunks simmered in creamy tomato gravy.</p>
+    <p><em>Goes well with: Butter Naan or Jeera Rice</em></p>
+
+    <div class="cart-options">
+      <select id="size-paneer-tikka">
+        <option value="Half">Half - $14</option>
+        <option value="Full">Full - $20</option>
+        <option value="Large">Large - $25</option>
+      </select>
+
+      <!-- <label> <input type="checkbox" id="spice-paneer-tikka"> Spicy
+      </label> --> 
+
+      <button onclick="addSizedItemToCart('Paneer Tikka Masala', 'size-paneer-tikka', 'spice-paneer-tikka')">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<div class="menu-item">
+ <img src="image/ButterPaneer.jpg" alt="Butter Paneer"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+  <h4>Butter Paneer</h4>
+  <p>Paneer in buttery, mildly sweet tomato-based gravy.</p>
+  <div class="cart-options">
+    <select id="size-butter-paneer">
+      <option value="Half">Half - $14</option>
+      <option value="Full">Full - $20</option>
+      <option value="Large">Large - $25</option>
+    </select>
+    <button onclick="addSizedItemToCart('Butter Paneer', 'size-butter-paneer')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="menu-item">
+ <img src="image/PaneerJalfrezi.jpg" alt="Paneer Jalfrezi "  style="width:9%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+  <h4>Paneer Jalfrezi</h4>
+  <p>Paneer stir-fried with bell peppers and tangy masala sauce.</p>
+  <div class="cart-options">
+    <select id="size-paneer-jalfrezi">
+      <option value="Half">Half - $14</option>
+      <option value="Full">Full - $20</option>
+      <option value="Large">Large - $25</option>
+    </select>
+    <button onclick="addSizedItemToCart('Paneer Jalfrezi', 'size-paneer-jalfrezi')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="menu-item">
+ <img src="image/VadaPav.jpg" alt="Vada Pav"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable"  />
+  <h4>Paneer Do Pyaza</h4>
+  <p>Paneer cooked with caramelized onions and flavorful Indian spices.</p>
+  <div class="cart-options">
+    <select id="size-paneer-dopyaza">
+      <option value="Half">Half - $14</option>
+      <option value="Full">Full - $20</option>
+      <option value="Large">Large - $25</option>
+    </select>
+    <button onclick="addSizedItemToCart('Paneer Do Pyaza', 'size-paneer-dopyaza')">Add to Cart</button>
+  </div>
+</div>
+    
+    <!-- Non-Veg -->
+<div id="nonveg" class="menu-section">
+  <h3>Non-Vegetarian Items</h3>
+
+  <div class="menu-item">
+   <img src="image/KadaiChicken.jpg" alt="Kadai Chicken"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;"  class="zoomable"/>
+    <h4>Kadai Chicken</h4>
+    <p>Chicken cooked in a spicy tomato-onion gravy with capsicum and spices.</p>
+    <div class="cart-options">
+      <select id="size-kadai-chicken">
+        <option value="Half">Half - $14</option>
+        <option value="Full">Full - $20</option>
+        <option value="Large">Large - $26</option>
+      </select>
+      <button onclick="addSizedItemToCart('Kadai Chicken', 'size-kadai-chicken')">Add to Cart</button>
+    </div>
+  </div>
+  
+
+  <div class="menu-item">
+   <img src="image/MuttonCurry.jpg" alt="Mutton Curry"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;"  class="zoomable"/>
+    <h4>Mutton Curry</h4>
+    <p>Tender mutton simmered in a rich onion-yogurt gravy, slow-cooked for deep flavor.</p>
+    <div class="cart-options">
+      <select id="size-mutton-curry">
+        <option value="Half">Half - $16</option>
+        <option value="Full">Full - $26</option>
+        <option value="Large">Large - $32</option>
+      </select>
+      <button onclick="addSizedItemToCart('Mutton Curry', 'size-mutton-curry')">Add to Cart</button>
+    </div>
+  </div>
+  
+  <div class="menu-item">
+   <img src="image/ChickenJalalfrezi.jpg" alt="Chicken Jalalfrezi"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable"  />
+  <h4>Chicken Jalfrezi</h4>
+  <p>Stir-fried chicken in tangy tomato gravy with onions and peppers.</p>
+  <div class="cart-options">
+    <select id="size-jalfrezi">
+      <option value="Half">Half - $14</option>
+      <option value="Full">Full - $20</option>
+      <option value="Large">Large - $26</option>
+    </select>
+    <button onclick="addSizedItemToCart('Chicken Jalfrezi', 'size-jalfrezi')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="menu-item">
+<img src="image/ChickenChangezi1.jpg" alt="Chicken Changezi1"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable"  />
+  <h4>Chicken Changezi</h4>
+  <p>Rich, creamy Mughlai-style chicken with layered spices.</p>
+  <div class="cart-options">
+    <select id="size-changezi">
+      <option value="Half">Half - $14</option>
+      <option value="Full">Full - $20</option>
+      <option value="Large">Large - $26</option>
+    </select>
+    <button onclick="addSizedItemToCart('Chicken Changezi', 'size-changezi')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="menu-item">
+<img src="image/ChickenChilli1.jpg" alt="Chicken Chilli"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable"  />
+  <h4>Chicken Chilli</h4>
+  <p>Desi-style spicy Indo-Chinese chicken in chili garlic sauce.</p>
+  <div class="cart-options">
+    <select id="size-chilli">
+      <option value="Half">Half - $13</option>
+      <option value="Full">Full - $19</option>
+      <option value="Large">Large - $25</option>
+    </select>
+    <button onclick="addSizedItemToCart('Chicken Chilli', 'size-chilli')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="menu-item">
+ <img src="image/ChickenCurry.jpg" alt="ChickenCurry"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;"  class="zoomable"/>
+  <h4>Chicken Curry</h4>
+  <p>Classic chicken curry with onion-tomato gravy and Indian spices.</p>
+  <div class="cart-options">
+    <select id="size-curry">
+      <option value="Half">Half - $13</option>
+      <option value="Full">Full - $19</option>
+      <option value="Large">Large - $25</option>
+    </select>
+    <button onclick="addSizedItemToCart('Chicken Curry', 'size-curry')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="menu-item">
+ <img src="image/ButterChicken.jpg" alt="Butter Chicken"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;"  class="zoomable"/>
+  <h4>Butter Chicken</h4>
+  <p>Chicken in creamy tomato-based gravy – a timeless favorite.</p>
+  <div class="cart-options">
+    <select id="size-butter">
+      <option value="Half">Half - $14</option>
+      <option value="Full">Full - $20</option>
+      <option value="Large">Large - $26</option>
+    </select>
+    <button onclick="addSizedItemToCart('Butter Chicken', 'size-butter')">Add to Cart</button>
+  </div>
+</div>
+
+<div class="menu-item">
+ <img src="image/ChickenDoPyaaza.jpg" alt="Chicken DoPyaza"  style="width: 9%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable"  />
+  <h4>Chicken Do Pyaza</h4>
+  <p>Chicken cooked with plenty of caramelized onions and spices.</p>
+  <div class="cart-options">
+    <select id="size-dopyaza">
+      <option value="Half">Half - $14</option>
+      <option value="Full">Full - $20</option>
+      <option value="Large">Large - $26</option>
+    </select>
+    <button onclick="addSizedItemToCart('Chicken Do Pyaza', 'size-dopyaza')">Add to Cart</button>
+  </div>
+</div>
+
+    <!-- Bread -->
+<div id="Bread" class="menu-section">
+  <h3>Bread</h3>
+  <div class="menu-item">
+     <img src="image/Roti.jpg" alt="Roti"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Roti</h4>
+    <p>Freshly made whole-weat flatbread,prefect with any curry.</p>
+    <button onclick="addToCart('Roti', 1)">
+      Add to Cart - $1
+    </button>
+     </div>
+     
+     <div class="menu-item">
+     <img src="image/Paratha.jpg" alt="Paratha"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Plain Paratha</h4>
+    <p>Fresh,warm, and layerwd- perfect with any meal.</p>
+    <button onclick="addToCart('Plain Paratha', 1.50)">
+      Add to Cart - $1.50
+    </button>
+      </div>
+      
+       <div class="menu-item">
+     <img src="image/SattuPratha.jpg" alt="Sattu Paratha"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Sattu Paratha</h4>
+    <p>Stuffed flatbread with spiced roasted gram flour, rich and hearty.</p>
+    <button onclick="addToCart('Sattu Paratha', 5)">
+      Add to Cart - $5
+    </button>
+      </div>
+      <div class="menu-item">
+     <img src="image/SattuPratha.jpg" alt="Sattu Paratha"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Paneer Paratha</h4>
+    <p>Stuffed flatbread with spiced roasted gram flour, rich and hearty.</p>
+    <button onclick="addToCart('Paneer Paratha', 5)">
+      Add to Cart - $5
+    </button>
+      </div>
+      
+       <div class="menu-item">
+     <img src="image/SattuPratha.jpg" alt="Sattu Paratha"  style="width:10%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Aloo Paratha</h4>
+    <p>Classic Indian paratha filled with flavorful. seasoned potatoes.</p>
+    <button onclick="addToCart('Aloo Paratha', 4)">
+      Add to Cart - $4
+    </button>
+      </div>
+  </div>
+  
+     <!-- Rice -->
+<div id="Grains" class="menu-section">
+  <h3>Grains</h3>
+  <div class="menu-item">
+     <img src="image/Rice1.jpg" alt="Rice"  style="width:8%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Plain Rice</h4>
+    <p>Classic steamed basmati rice.</p>
+    <button onclick="addToCart('Plain Rice', 4)">
+      Add to Cart - $4
+    </button>
+     </div>
+      <div class="menu-item">
+     <img src="image/JeeraRice.jpg" alt="Jeera Rice"  style="width:6%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Jeera Rice</h4>
+    <p>Fragrant rice tempered with roasted cumin.</p>
+    <button onclick="addToCart('Jeera Rice', 5)">
+      Add to Cart - $5
+    </button>
+     </div>
+      <div class="menu-item">
+     <img src="image/VegPulao.jpg" alt="Veg Pulao"  style="width:8%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>veg Pulao</h4>
+    <p>Basmati rice with mixed vegetable and mild spices.</p>
+    <button onclick="addToCart('Veg Pulo', 6)">
+      Add to Cart - $6
+    </button>
+     </div>
+      <div class="menu-item">
+     <img src="image/VegFriedRice.jpg" alt="Veg Fried Rice"  style="width:8%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Veg Fried Rice</h4>
+    <p>Stri-fried rice with fresh veggies,Indo-Chinese style.</p>
+    <button onclick="addToCart('Veg Fried Rice', 8)">
+      Add to Cart - $8
+    </button>
+     </div>
+          <!-- Sweet -->
+<div id="Sweet" class="menu-section">
+  <h3>Sweet</h3>
+    <div class="menu-item">
+     <img src="image/Seviyan.jpg" alt="Seviyan"  style="width:8%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Sevaiyan</h4>
+    <p>Sweet vermicelli dessert with milk, cardamom, and dry fruits.</p>
+    <button onclick="addToCart('Sevaiyan', 4)">
+      Add to Cart - $4
+    </button>
+     </div>
+       <div class="menu-item">
+     <img src="image/Seviyan.jpg" alt="Seviyan"  style="width:8%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Rice Kheer</h4>
+    <p>Stri-fried rice with fresh veggies,Indo-Chinese style.</p>
+    <button onclick="addToCart('Rice Kheer', 5)">
+      Add to Cart - $5
+    </button>
+     </div>
+</div>
+
+<div id="Drink" class="menu-section">
+  <h3>Drink</h3>
+    <div class="menu-item">
+     <img src="image/MangoLassi.jpg" alt="Mango Lassi"  style="width:6%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Mango Lassi</h4>
+    <p>Creamy yogurt drink blended with ripe mango – sweet, smooth & refreshing!.</p>
+    <button onclick="addToCart('Mango Lassi', 5)">
+      Add to Cart - $5
+    </button>
+     </div>
+       <div class="menu-item">
+     <img src="image/RoseCoolDrink.jpg" alt="Rose Cooler"  style="width:6%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Gond Katira Mint Cooler</h4>
+    <p>A minty lemon cooler with basil seeds & gond katira – hydrate the Desi way!
+.</p>
+    <button onclick="addToCart('Rose Cooler', 6)">
+      Add to Cart - $6
+    </button>
+     </div>
+     <div class="menu-item">
+     <img src="image/MangoFalooda.jpg" alt="Mango Falooda"  style="width:8%; border-radius: 2px;  float: right; margin-right: 15px;" class="zoomable" />
+    <h4>Mango Falooda</h4>
+    <p>Creamy mango falooda with basil seeds, gond katira & nuts – refreshing & indulgent! 🍨
+
+.</p>
+    <button onclick="addToCart('Mango falooda', 14)">
+      Add to Cart - $14
+    </button>
+     </div>
+</div>
+    <!-- Contact -->
+    <div id="contact" class="menu-section">
+      <h3>Contact Us</h3>
+      <div class="menu-item">
+        <p>📞 +1 (980) 8006909</p>
+        <p>📧 desibitesdelight2025@gmail.com</p>
+        <p>📍 Brentwood, CA</p>
+        <a href="https://chat.whatsapp.com/F1ptGLcAOqz4dPhywiw0n4?mode=r_c" target="_blank" class="whatsapp-join">
+  <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp Icon" />
+  Join Our WhatsApp Group
+</a>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- Toast -->
+  <div id="toast" style="
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #27ae60;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+    font-weight: bold;
+    font-size: 16px;
+  "></div>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Scripts -->
+  <script>
+    AOS.init();
+
+    function showPopup() {
+      document.getElementById('offerPopup').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('offerPopup').style.display = 'none';
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.style.display = "block";
+      setTimeout(() => toast.style.display = "none", 2000);
+    }
+
+
+    // Update cart count on the top icon
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("desiBiteCart")) || [];
+      const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const cartCount = document.getElementById("cartCount");
+      if (cartCount) cartCount.textContent = totalCount;
+    }
+
+    // Add item to localStorage cart
+    function addToCart(name, price) {
+      const cart = JSON.parse(localStorage.getItem("desiBiteCart")) || [];
+      const existingItem = cart.find(item => item.name === name);
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+
+      localStorage.setItem("desiBiteCart", JSON.stringify(cart));
+      updateCartCount();
+      showToast(`${name} added to cart!`);
+    }
+
+    // For items with size dropdown (no spice checkbox)
+    function addSizedItemToCart(itemName, sizeSelectId) {
+      const size = document.getElementById(sizeSelectId).value;
+      let price = 0;
+
+
+      if (size === "Half") price = 5.99;
+      if (size === "Full") price = 9.99;
+      if (size === "Large") price = 13.99;
+
+      if (itemName === "Palak Paneer") {
+        if (size === "Half") price = 6.99;
+        if (size === "Full") price = 11.99;
+        if (size === "Large") price = 15.99;
+      }
+      else if (itemName === "Matar Paneer") {
+    	  if (size === "Half") price = 6.99;
+    	  if (size === "Full") price = 11.99;
+    	  if (size === "Large") price = 15.99;
+    	} else if (itemName === "Paneer Bhurji") {
+    	  if (size === "Half") price = 6.49;
+    	  if (size === "Full") price = 10.99;
+    	  if (size === "Large") price = 14.49;
+    	} else if (itemName === "Paneer Tikka Masala") {
+    	  if (size === "Half") price = 7.49;
+    	  if (size === "Full") price = 12.99;
+    	  if (size === "Large") price = 16.99;
+    	} else if (itemName === "Butter Paneer") {
+    	  if (size === "Half") price = 7.49;
+    	  if (size === "Full") price = 12.49;
+    	  if (size === "Large") price = 16.49;
+    	} else if (itemName === "Paneer Jalfrezi") {
+    	  if (size === "Half") price = 6.99;
+    	  if (size === "Full") price = 11.99;
+    	  if (size === "Large") price = 15.99;
+    	} else if (itemName === "Paneer Do Pyaza") {
+    	  if (size === "Half") price = 6.49;
+    	  if (size === "Full") price = 11.49;
+    	  if (size === "Large") price = 15.49;
+    	}
+      
+      else if (itemName === "Kadai Chicken") {
+  	    if (size === "Half") price = 7.99;
+  	    if (size === "Full") price = 13.99;
+  	    if (size === "Large") price = 17.99;
+  	  } else if (itemName === "Mutton Curry") {
+  	    if (size === "Half") price = 9.99;
+  	    if (size === "Full") price = 15.99;
+  	    if (size === "Large") price = 19.99;
+  	  }
+      else if (itemName === "Chicken Jalfrezi") {
+    	  if (size === "Half") price = 7.99;
+    	  if (size === "Full") price = 13.99;
+    	  if (size === "Large") price = 17.99;
+    	} else if (itemName === "Chicken Changezi") {
+    	  if (size === "Half") price = 8.49;
+    	  if (size === "Full") price = 14.99;
+    	  if (size === "Large") price = 18.99;
+    	} else if (itemName === "Chicken Chilli") {
+    	  if (size === "Half") price = 7.49;
+    	  if (size === "Full") price = 12.99;
+    	  if (size === "Large") price = 16.99;
+    	} else if (itemName === "Chicken Curry") {
+    	  if (size === "Half") price = 6.99;
+    	  if (size === "Full") price = 11.99;
+    	  if (size === "Large") price = 15.99;
+    	} else if (itemName === "Butter Chicken") {
+    	  if (size === "Half") price = 7.49;
+    	  if (size === "Full") price = 13.49;
+    	  if (size === "Large") price = 17.49;
+    	} else if (itemName === "Chicken Do Pyaza") {
+    	  if (size === "Half") price = 6.99;
+    	  if (size === "Full") price = 12.49;
+    	  if (size === "Large") price = 16.49;
+    	}
+      
+      const displayName = `${itemName} (${size})`;
+      addToCart(displayName, price);
+    }
+
+    // For items without size dropdown
+    function addSimpleItemToCart(itemName, price) {
+      addToCart(itemName, price);
+    }
+
+    // On page load
+    document.addEventListener("DOMContentLoaded", updateCartCount);
+    
+    //Zoomable
+    document.querySelectorAll(".zoomable").forEach(img => {
+    	  img.addEventListener("click", () => {
+    	    const overlay = document.createElement("div");
+    	    overlay.className = "zoom-overlay";
+    	    overlay.innerHTML = `<img src="${img.src}" alt="${img.alt}" />`;
+    	    
+    	    overlay.addEventListener("click", () => overlay.remove()); // Close on click
+    	    document.body.appendChild(overlay);
+    	  });
+    	});
+
+    </script>
+
+</body>
+</html>
