@@ -762,7 +762,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const label = dateSelect.options[dateSelect.selectedIndex].textContent;
     const value = dateSelect.value;
     const combined = `${label} at ${time}`;
-    const saveValue = `${value} ${time}`;
+    const saveValue = `${value}T${time}`;
 
     selectedOutput.textContent = `You selected: ${combined}`;
     hiddenField.value = saveValue;
