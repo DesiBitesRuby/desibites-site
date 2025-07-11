@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Desi Bites Catering</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 768px)">
+  <style>
+  h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #FFD700; /* gold/yellow to stand out */
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  margin-bottom: 20px;
+  text-align: center;
+}
+    body, html {
+      margin: 0; padding: 0; font-family: Arial, sans-serif; color: #fff;
+    }
+    .hero {
+    padding: 60px 20px;
+    text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(139, 62, 47, 0.3)),
+                  url('image/YellowGreen.jpg') center/cover no-repeat;
+      height: 60vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      color: #fff;
+    }
+    .hero h1 {
+  animation: fadeInDown 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.highlight {
+  color: #FFD700; /* gold or your brand color */
+}
+    .hero p {
+      max-width: 700px; font-size: 1.2em; line-height: 1.5;
+    }
+    .container {
+      background: #f9f9f9; color: #333; padding: 40px 20px; max-width: 800px; margin: -60px auto 40px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .container h2 {
+      text-align: center; margin-bottom: 30px; color: #d32f2f;
+    }
+    form label {
+      display: block; margin: 15px 0 5px; font-weight: bold;
+    }
+    form input, form textarea, form select {
+      width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1em;
+    }
+    form textarea { resize: vertical; min-height: 100px; }
+    .checkbox-group, .radio-group {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;
+    }
+    .checkbox-group label, .radio-group label {
+      font-weight: normal; display: flex; align-items: center; gap: 5px;
+    }
+    button {
+      background: #d32f2f; color: #fff; border: none; padding: 15px 25px; border-radius: 5px; cursor: pointer; margin-top: 20px; font-size: 1em;
+      display: block; width: 100%;
+    }
+    footer {
+      background: #333; color: #fff; text-align: center; padding: 20px;
+    }
+    footer a { color: #ffeb3b; text-decoration: none; }
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('image/YellowGreen.jpg') center/cover no-repeat fixed;
+  color: #333;
+}
+/* Top navbar styling */
+/* Navbar styling */
+    .navbar {
+      background-color: #B06B6B; /* muted maroon */
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-container {
+    position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: #A8323E;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      color: white;
+      z-index: 1000;
+}
+
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-left: 0; /* remove any default margin */
+}
+
+.navbar-logo img {
+  height: 50px;
+  width: auto;
+  margin-right: 8px; /* keep some space between logo and text */
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+    .navbar-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-links a:hover {
+      color: #FFD700; /* gold on hover */
+    }
+
+.email-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.4em 0.8em;
+  border-radius: 0.4em;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.email-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  color: #ffd700; /* Gold color on hover */
+}
+
+.email-link i {
+  transition: transform 0.3s;
+}
+
+.email-link:hover i {
+  transform: rotate(-15deg) scale(1.2);
+}
+
+/* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 60px; /* below navbar */
+      left: 0;
+      width: 220px;
+      height: calc(100% - 60px);
+      background: #fff;
+      color: #7D9A6C; /* muted light green text */
+      padding: 20px 10px;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #7D9A6C;
+      text-align: center;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #7D9A6C;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin: 5px 0;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #f0f0f0;
+    }
+
+@media (max-width: 768px) {
+  .container {
+    margin-left: 0 !important;
+  }
+}
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+  /* Theme toggle */
+  .toggle-mode {
+    top: 0.5em;
+    right: 0.5em;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+
+  </style>
+</head>
+
+<body>
+<!-- Top Navigation Bar -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <a href="index.html" class="navbar-logo">
+      <img src="image/DesiBitesLogowithorange.jpg" alt="Desi Bites Logo">
+      <span class="logo-text">Desi Bites</span>
+      </a>
+    <ul class="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <a href="Catering.html">Catering</a>
+      <li><a href="Cart.html">🛒 Cart (<span id="cartCount">0</span>)</a></li>
+      <li><a href="menu.html#contact">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Sidebar -->
+  <div class="sidebar">
+    <a href="menu.html">🧾 Place Order</a>
+    <a href="Catering.html">👨‍🍳 Catering</a>
+    <a href="menu.html">📜 Full Menu</a>
+    <a href="index.html#testimonials">💬 Testimonials</a>
+    <a href="AboutUs.html">🙋‍♀️AboutUs</a>
+    <a href="menu.html#contact">📞 Contact Us</a>
+  </div>
+  <script src="cart-utils.js"></script>
+<script>
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("desiBiteCart")) || [];
+    const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCountEl = document.getElementById("cartCount");
+    if (cartCountEl) {
+      cartCountEl.textContent = totalCount;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
+  <section class="hero">
+    <h1>✨ Desi Bites Catering ✨</h1>
+    <p>
+      Authentic homestyle flavors for every celebration.
+Custom menus, fresh ingredients, and heartfelt service
+     
+      <br><br>— let us make your special moments unforgettable! ❤️
+    </p>
+  </section>
+
+  <div class="container">
+    <h2>Catering Request Form</h2>
+    <form id="cateringForm">
+      <!-- Personal Info -->
+      <label for="name">Name*</label>
+      <input type="text" id="customer_name" name="customer_name" required />
+
+      <label for="email">Email*</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone Number*</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <!-- Event Details -->
+      <label for="event_date">Event Date*</label>
+      <input type="date" id="event_date" name="event_date" required />
+
+      <label for="event_name">Event Name</label>
+      <input type="text" id="event_name" name="event_name" placeholder="e.g., Birthday Bash, Family Get-together, Office Party"/>
+
+      <label for="message">Message / Details</label>
+      <textarea id="message" name="message" placeholder="Tell us about your event..."></textarea>
+
+      <label for="num_people">Number of People*</label>
+      <input type="number" id="num_people" name="num_people" min="1" required />
+
+      <label for="event_time">Time of Event*</label>
+      <input type="time" id="event_time" name="event_time" required />
+
+      <label>Meal Options*</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="meal_option" value="Breakfast" /> Breakfast</label>
+        <label><input type="checkbox" name="meal_option" value="Lunch" /> Lunch</label>
+        <label><input type="checkbox" name="meal_option" value="Dinner" /> Dinner</label>
+        <label><input type="checkbox" name="meal_option" value="Other" /> Other</label>
+      </div>
+
+      <label>Type of Catering*</label>
+      <div class="radio-group">
+        <label><input type="radio" name="catering_type" value="Box Lunches" required /> Box Lunches</label>
+        <label><input type="radio" name="catering_type" value="Party Trays" required /> Party Trays</label>
+      </div>
+
+      <button type="submit">Submit Catering Request</button>
+    </form>
+  </div>
+
+  <footer style="text-align: center; color: white; padding: 1em; background-color: #333;">
+   <p> 📞 Contact us today to plan your next event!<br>
+   Call us or email us: <a href="tel:+19808006909">+1 980-800-6909</a> | <a href="https://mail.google.com/mail/?view=cm&fs=1&to=desibitesdelight2025@gmail.com&su=Inquiry%20from%20Website" 
+       target="_blank" 
+       class="email-link"> <i class="fas fa-envelope"></i> desibitesdelight2025@gmail.com</a><br>
+    We’d love to help make your event even more memorable.
+    </p>
+  </footer>
+
+ <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  (function () {
+    emailjs.init({ publicKey: "U6-dAbzSWXGTN47ko" }); // Replace with your EmailJS public key
+  })();
+
+  document.getElementById("cateringForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const form = this;
+    const formData = new FormData(form);
+    
+    const scheduledValue = form.event_date?.value;
+    if (!scheduledValue) {
+      alert("⚠️ Please select an event date.");
+      return;
+    }
+
+    const scheduledText = new Date(scheduledValue).toLocaleString("en-US", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true
+    });
+   
+
+    // Gather WhatsApp details up front (no need to repeat later)
+    const customer_name = form.customer_name?.value || "N/A";
+    const phone = form.phone?.value || "N/A";
+    const event_date = form.event_date?.value || "N/A";
+    const num_people = form.num_people?.value || "N/A";
+    const event_name = form.event_name?.value || "N/A";
+    const meal_options = [...form.querySelectorAll("input[name='meal_option']:checked")].map(el => el.value).join(", ") || "N/A";
+    const catering_type = form.querySelector("input[name='catering_type']:checked")?.value || "N/A";
+
+    const whatsappMessage = `👋 Hi, I'm ${customer_name}!
+
+📅 Event Date: ${scheduledText}
+👥 Guests: ${num_people}
+📌 Event: ${event_name}
+🍽 Meal: ${meal_options}
+🎉 Catering Type: ${catering_type}
+☎️ Phone: ${phone}
+
+Looking forward to discussing catering!`;
+    const whatsappNumber = "19808006909"; // Your WhatsApp number with country code
+
+    // Start EmailJS send
+    emailjs.sendForm("service_ms8vb3e", "template_izm3iry", form)
+      .then(() => {
+        console.log("✅ Email sent successfully");
+
+        // After EmailJS, send to Google Sheets
+        return fetch("https://script.google.com/macros/s/AKfycbyIJhNSQOHbgKA45yCKeBYg-pSDSH5zi11qZPjRI3fdzgAKqBIBNtj0b8Evka40M39esQ/exec", {
+          method: "POST",
+          body: formData
+        });
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Google Sheets error");
+        return res.text();
+      })
+      .then(result => {
+        console.log("✅ Saved to Google Sheets:", result);
+
+        // Only if both succeed: open WhatsApp
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+        alert("✅ Your catering request was submitted! We'll contact you shortly.");
+
+        form.reset();
+      })
+      .catch(error => {
+        console.error("❌ Submission error:", error);
+        alert("❌ Something went wrong while submitting your request. Please try again later.");
+      });
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+/* General Mobile Reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Adjust main content */
+.main-content {
+  margin-left: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+}
+ .content {
+  margin-left: 220px; /* for desktop when sidebar is visible */
+  padding: 20px;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .content {
+    margin-left: 0; /* remove sidebar space */
+    padding: 15px;
+  }
+
+  .menu-heading {
+    padding: 20px 15px !important;
+    text-align: center;
+  }
+
+  .menu-heading h2 {
+    font-size: 1.5rem !important;
+  }
+
+  .menu-heading p {
+    font-size: 1rem !important;
+    padding: 0 10px;
+  }
+}
+  
+/* Navbar Stack on Mobile */
+ @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        top: 60px;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+        justify-content: center;
+      }
+      .sidebar a {
+        margin: 10px;
+      }
+
+  .navbar h1 {
+        font-size: 18px;
+      }
+
+/* Hide sidebar on mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 10px 15px;
+    box-shadow: none;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .content {
+    margin-left: 0; /* prevent overlap */
+    padding: 15px;
+  }
+
+  .sidebar a {
+    padding: 12px 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+  }
+}
+}
+
+/* Form elements on mobile */
+form input,
+form select,
+form textarea,
+form button {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 12px;
+}
+
+/* Hero and section padding fix */
+.hero,
+.section {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Prevent long words from breaking layout */
+body, input, textarea {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+@media (max-width: 768px) {
+  .container {
+    margin: 15px;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  form label {
+    margin-top: 12px;
+  }
+
+  form input,
+  form textarea {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  footer p {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+}
